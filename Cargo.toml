@@ -10,8 +10,22 @@ readme = "README.md"
 documentation = "https://docs.rs/st7735-lcd"
 
 [dependencies]
-embedded-hal = "0.2"
+embedded-hal = { version = "0.2.7", features = ["unproven"] }
 nb = "0.1"
+embassy-nrf = { git = "https://github.com/embassy-rs/embassy.git", features = [
+    "defmt",
+    "nrf52840",
+    "time-driver-rtc1",
+    "gpiote",
+    "unstable-pac",
+    "nightly",
+] }
+embassy-time = { git = "https://github.com/embassy-rs/embassy.git", features = [
+    "defmt",
+    "nightly",
+    "defmt-timestamp-uptime",
+] }
+defmt = "0.3.5"
 
 [dependencies.embedded-graphics]
 version = "0.8"
