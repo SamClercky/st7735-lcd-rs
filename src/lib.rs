@@ -6,7 +6,6 @@ pub mod instruction;
 
 use crate::instruction::Instruction;
 
-use defmt::dbg;
 use embassy_nrf::{
     gpio::{AnyPin, Level, Output, OutputDrive},
     spim::{self, Instance},
@@ -145,7 +144,7 @@ where
     }
 
     async fn write_data(&mut self, data: &[u8]) -> Result<(), ()> {
-        self.spi.write(defmt::dbg!(data)).await.map_err(|_| ())
+        self.spi.write(data).await.map_err(|_| ())
     }
 
     /// Writes a data word to the display.
